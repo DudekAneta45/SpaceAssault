@@ -11,11 +11,13 @@ public class Enemy : MonoBehaviour {
     [SerializeField] int hits = 3;
 
     ScoreBoard scoreBoard;
+    EnemiesCount enemiesCount;
 
 	// Use this for initialization
 	void Start () {
         AddNonTriggerBoxCollider();
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        enemiesCount = FindObjectOfType<EnemiesCount>();
 	}
 
     private void AddNonTriggerBoxCollider()
@@ -39,5 +41,6 @@ public class Enemy : MonoBehaviour {
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
         fx.transform.parent = parent;
         Destroy(gameObject);
+        enemiesCount.enemiesNumber--;
     }
 }

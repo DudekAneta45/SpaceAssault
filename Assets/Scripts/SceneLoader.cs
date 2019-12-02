@@ -5,14 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
-    // Use this for initialization
-    void Start()
+    ScoreBoard scoreBoard;
+    CollisionHandler collisionHandler;
+
+    private void Start()
     {
-        Invoke("LoadFirstScene", 3f);
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+        collisionHandler = FindObjectOfType<CollisionHandler>();
     }
 
-    void LoadFirstScene()
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(0);
+        scoreBoard.ResetScore();
+        collisionHandler.ResetLapsNumber();
+    }
+
+    public void LoadEndScreen()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour {
 
-    int score;
+    public static int score;
     Text scoreText;
 
 	// Use this for initialization
@@ -18,6 +18,11 @@ public class ScoreBoard : MonoBehaviour {
     {
         score = score + scoreHit;
         scoreText.text = score.ToString();
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
     }
 
 }
